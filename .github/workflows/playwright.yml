@@ -1,29 +1,27 @@
-name: Playwright QA
+name: DataDash QA Playwright Scraper
 
 on:
-  workflow_dispatch:
   push:
+    branches: [main]
+  workflow_dispatch:
 
 jobs:
-  run:
+  scrape:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 18
+          node-version: '20'
 
-      - name: Install deps
-        run: |
-          npm init -y
-          npm install playwright
+      - name: Install dependencies
+        run: npm install playwright
 
-      - name: Install browsers
-        run: npx playwright install --with-deps
+      - name: Install Playwright browsers
+        run: npx playwright install chromium
 
-      - name: Run Script 23f3002112@ds.study.iitm.ac.in
-        run: node sum_tables.js
+      - name: Run QA scraper - 23f3002112@ds.study.iitm.ac.in
+        run: node scraper.js
