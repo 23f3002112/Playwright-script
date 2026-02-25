@@ -8,7 +8,7 @@ const { chromium } = require('playwright');
   const page = await browser.newPage();
 
   for (const seed of seeds) {
-    const url = `https://example.com/seed-${seed}`;   // <-- replace with actual URLs
+    const url = `https://exam.sanand.workers.dev/tds-2026-01-ga3/playwright-seed-${seed}`;
     await page.goto(url, { waitUntil: 'load' });
 
     const sum = await page.evaluate(() => {
