@@ -1,0 +1,27 @@
+name: Playwright Table Sum QA
+
+on:
+  push:
+  workflow_dispatch:
+
+jobs:
+  run-playwright:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      - name: Run Playwright Script - 23f3002112@ds.study.iitm.ac.in
+        run: node sum_tables.js
